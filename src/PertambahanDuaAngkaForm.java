@@ -17,6 +17,38 @@ public class PertambahanDuaAngkaForm extends javax.swing.JFrame {
      */
     public PertambahanDuaAngkaForm() {
         initComponents();
+        
+        jTextField1.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume(); // Menolak karakter selain angka
+                }
+            }
+        });
+        
+        jTextField2.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume(); // Menolak karakter selain angka
+                }
+            }
+        });
+        
+        jTextField1.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                jTextField1.setText(""); // Membersihkan saat mendapat fokus
+            }
+            public void focusLost(FocusEvent e) {}
+        });
+
+        jTextField2.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                jTextField2.setText(""); // Membersihkan saat mendapat fokus
+            }
+            public void focusLost(FocusEvent e) {}
+        });
     }
 
     /**
@@ -66,9 +98,19 @@ public class PertambahanDuaAngkaForm extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("HAPUS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("KELUAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel3.setText("Masukkan Angka");
@@ -149,7 +191,7 @@ public class PertambahanDuaAngkaForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    try {
+     try {
             // Ambil input dari text field
             int angka1 = Integer.parseInt(jTextField1.getText());
             int angka2 = Integer.parseInt(jTextField2.getText());
@@ -168,17 +210,16 @@ public class PertambahanDuaAngkaForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-     private void hapusInput(java.awt.event.ActionEvent evt) {                             
-        // Hapus input pada kedua TextField dan arahkan fokus ke TextField pertama
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField1.requestFocus();
-    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void keluarAplikasi(java.awt.event.ActionEvent evt) {                                 
-        // Keluar dari aplikasi
-        System.exit(0);
-    }
     
     /**
      * @param args the command line arguments
