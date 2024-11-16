@@ -31,4 +31,4 @@
 
 ## Screenshots
 
-![App Screenshot](URL_Screenshot)
+![App Screenshot](https://github.com/Koezingone/AplikasiPertambahanDuaAngka/blob/main/img/pertambahanDuaAngka.gif)
